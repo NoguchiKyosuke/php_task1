@@ -7,7 +7,7 @@
 <head>
 
 <body>
-    <form action="listgen.php" method="POST">
+    <form action="listgen,php" method="POST">
         <label for="F">F</label>
         <input type="number" name="F" id="F" repuired><br>
 
@@ -23,16 +23,10 @@
         <label for="Post">Post</label>
         <input type="text" name="Post" id="Post" repuired><br>
 
-        <input type="submit" value="submit">
+        <input type"submit" value="submit">
     </form>
     
-    <?php
-
-        function customErrorHandler($error, $errstr, $errfile, $errline){
-            echo "Error:".$errstr."in".$errfile." on line".$errline."<br>";
-        }
-        set_error_handler("customErrorHandler");
-        
+/**    <?php
         if(isset($_POST['F'])){
             $F = $_POST['F'];
         }else{
@@ -42,6 +36,7 @@
         if(isset($_POST['E'])){
             $E = $_POST['E'];
         }else{
+            set_error_handler("E");
             echo $undefinedVariable;
         }
 
@@ -51,22 +46,8 @@
             $S = 1;
         }
 
-        $Pre = htmlspecialchars(trim($_POST['Pre']));
-        $Post = htmlspecialchars(trim($_POST['Post']));
-
-        //echo "F=".$F." E=".$E." S=".$S."<br>";
-             
-        if(!is_numeric($F) || !is_numeric($E) || !is_numeric($S)){
-            echo $undefinedVariable;
-        }else{
-            for($i = $F; $i < $E; $i ++){
-                echo $Pre.$F.$Post."<br>";
-                $F = $F + $S;
-            }
-        }
-            
     ?>
-
+    **/
 </body>
 
 </html>
