@@ -23,48 +23,46 @@
         <label for="Post">Post</label>
         <input type="text" name="Post" id="Post" repuired><br>
 
-        <input type="submit" value="submit">
+        <input type="submit" name="submit" value="submit">
     </form>
     
     <?php
-
-        function customErrorHandler($error, $errstr, $errfile, $errline){
-            echo "Error:".$errstr."in".$errfile." on line".$errline."<br>";
-        }
-        set_error_handler("customErrorHandler");
+        if(isset($_POST['submit'])){
+            function customErrorHandler($errno, $errstr, $errfile, $errline){
+                echo "Error:".$errstr." in ".$errfile." on line ".$errline."<br>";
+            }
+            set_error_handler("customErrorHandler");
         
-        if(isset($_POST['F'])){
-            $F = $_POST['F'];
-        }else{
-            $F = 0;
-        }
+            if(isset($_POST['F'])){
+                $F = $_POST['F'];
+            }else{
+                $F = 0;
+            }
 
-        if(isset($_POST['E'])){
-            $E = $_POST['E'];
-        }else{
-            echo $undefinedVariable;
-        }
+            if(isset($_POST['E'])){
+                $E = $_POST['E'];
+            }else{
+                echo $undefinedVariable;
+            }
 
-        if(isset($_POST['S'])){
-            $S = $_POST['S'];
-        }else{
-            $S = 1;
-        }
+            if(isset($_POST['S'])){
+                $S = $_POST['S'];
+            }else{
+                $S = 1;
+            }
 
-        $Pre = htmlspecialchars(trim($_POST['Pre']));
-        $Post = htmlspecialchars(trim($_POST['Post']));
-
-        //echo "F=".$F." E=".$E." S=".$S."<br>";
+            $Pre = htmlspecialchars(trim($_POST['Pre']));
+            $Post = htmlspecialchars(trim($_POST['Post']));
              
-        if(!is_numeric($F) || !is_numeric($E) || !is_numeric($S)){
-            echo $undefinedVariable;
-        }else{
-            for($i = $F; $i < $E; $i ++){
-                echo $Pre.$F.$Post."<br>";
-                $F = $F + $S;
+            if(!is_numeric($F) || !is_numeric($E) || !is_numeric($S)){
+                echo $undefinedVariable;
+            }else{
+                while($F <= $S){
+                    echo $Pre.$F.$Post."<br>";
+                    $F = $F + $E;
+                }
             }
         }
-            
     ?>
 
 </body>
